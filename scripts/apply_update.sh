@@ -4,10 +4,10 @@
 
 REPO_DIR="/home/felip/Projeto_shell_automacao"
 BRANCH="main"
-FLAG_FILE="$REPO_DIR/.update_pending"
-BACKUP_DIR="$REPO_DIR/backups"
-LOG_DIR="$REPO_DIR/logs"
-LOG_FILE="$LOG_DIR/update.log"
+FLAG_FILE="${REPO_DIR}/.update_pending"
+BACKUP_DIR="${REPO_DIR}/backups"
+LOG_DIR="${REPO_DIR}/logs"
+LOG_FILE="${LOG_DIR}/update.log"
 
 if [ ! -f "$FLAG_FILE" ]; then
     echo "Nenhuma atualização pendente para o repositório."
@@ -15,6 +15,8 @@ if [ ! -f "$FLAG_FILE" ]; then
 fi
 
 mkdir -p "$BACKUP_DIR"
+mkdir -p "$LOG_DIR"
+
 cd "$REPO_DIR" || exit 1
 
 echo "======================================="
@@ -46,7 +48,6 @@ CURRENT_COMMIT=$(git rev-parse HEAD)
 echo "$CURRENT_COMMIT" > "$BACKUP_DIR/last_commit"
 echo "[$(date)] Backup de segurança criado para o commit $CURRENT_COMMIT" >> "$LOG_FILE"
 git diff > "$BACKUP_DIR/diff_$TIMESTAMP.patch"
-git stash push -u -m "AutoBackup-$TIMESTAMP" >> "$LOG_FILE" 2>&1
 
 echo "[$(date)] Executando git pull..." >> "$LOG_FILE"
 git pull origin "$BRANCH" >> "$LOG_FILE" 2>&1
@@ -59,7 +60,6 @@ if [ $? -ne 0 ]; then
     exit 1
 fi
 
-git stash pop >> "$LOG_FILE" 2>&1
 rm -f "$FLAG_FILE"
 
 echo "[$(date)] Atualização aplicada com sucesso." >> "$LOG_FILE"
