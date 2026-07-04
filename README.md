@@ -22,5 +22,22 @@ O grupo é composto por 4 integrantes, com as responsabilidades distribuídas da
 Para testar e rodar a ferramenta em seu ambiente Linux, siga os passos abaixo:
 
 1. Certifique-se de dar permissão de execução aos scripts contidos na pasta do projeto:
-   ```bash
-   chmod +x scripts/*.sh
+    ```bash
+    chmod +x scripts/*.sh
+   
+2. Configure o caminho do repositório local que você deseja monitorar alterando a variável `REPOS` dentro do arquivo `scripts/check_updates.sh`.
+
+3. Execute o script de verificação (este script pode ser configurado na Cron do Linux para rodar silenciosamente em segundo plano):
+    ```bash
+    ./scripts/check_updates.sh
+
+4. Se o script detectar que existem novos commits no servidor remoto, ele criará um alerta oculto. Para aplicar a atualização com segurança, execute o script interativo:
+    ```bash
+    ./scripts/apply_update.sh
+
+## Documentação de Uso de IA Generativa (GenAI)
+A ferramenta Gemini (Google) foi utilizada como apoio ao desenvolvimento do projeto nas seguintes frentes:
+- Sugestão da estrutura do laço de repetição while true com conversão de strings para caixa baixa
+- Apoio na estruturação e padronização da documentação técnica presente neste arquivo.
+
+**Projeto desenvolvido para a Faculdade de Tecnologia (FT - UNICAMP) | Campinas-SP, 2026.**
