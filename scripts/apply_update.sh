@@ -48,14 +48,13 @@ echo "[$(date)] Backup de segurança criado para o commit $CURRENT_COMMIT" >> "$
 git diff > "$BACKUP_DIR/diff_$TIMESTAMP.patch"
 git stash push -u -m "AutoBackup-$TIMESTAMP" >> "$LOG_FILE" 2>&1
 
-echo "[$(date)] Executando git pull --ff-only..." >> "$LOG_FILE"
-git pull --ff-only origin "$BRANCH" >> "$LOG_FILE" 2>&1
+echo "[$(date)] Executando git pull..." >> "$LOG_FILE"
+git pull origin "$BRANCH" >> "$LOG_FILE" 2>&1
 
 if [ $? -ne 0 ]; then
     echo "!! Erro crítico detectado durante o pull. Iniciando Rollback... !!"
     PREVIOUS_COMMIT=$(cat "$BACKUP_DIR/last_commit")
     git reset --hard "$PREVIOUS_COMMIT" >> "$LOG_FILE" 2>&1
-    git stash pop >> "$LOG_FILE" 2>&1
     echo "Rollback concluído com sucesso. O ambiente foi restaurado."
     exit 1
 fi
