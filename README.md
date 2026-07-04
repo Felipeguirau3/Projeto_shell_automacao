@@ -37,7 +37,7 @@ Para testar e rodar a ferramenta em seu ambiente Linux, siga os passos abaixo:
 
 ## Documentação de Uso de IA Generativa (GenAI)
 A ferramenta Gemini (Google) foi utilizada como apoio ao desenvolvimento do projeto nas seguintes frentes:
-- Sugestão da estrutura do laço de repetição while true com conversão de strings para caixa baixa
+- Sugestão da estrutura do laço de repetição while true com conversão de strings para caixa baixa.
 - Apoio na estruturação e padronização da documentação técnica presente neste arquivo.
 
 **Projeto desenvolvido para a Faculdade de Tecnologia (FT - UNICAMP) | Campinas-SP, 2026.**
