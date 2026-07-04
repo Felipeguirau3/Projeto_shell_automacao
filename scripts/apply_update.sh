@@ -2,7 +2,7 @@
 # Aplicador de Atualizações com Rollback Automático
 # =====================================================================
 
-REPO_DIR="/home/lucas/projetos/repo-teste-prog"
+REPO_DIR="/home/felip/Projeto_shell_automacao"
 BRANCH="main"
 FLAG_FILE="$REPO_DIR/.update_pending"
 BACKUP_DIR="$REPO_DIR/backups"

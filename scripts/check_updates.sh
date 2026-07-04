@@ -2,7 +2,7 @@
 # Verificador Automático de Atualizações (Background)
 # =====================================================================
 
-REPOS=("/home/lucas/projetos/repo-teste-prog")
+REPOS=("/home/felip/Projeto_shell_automacao")
 BRANCH="main"
 LOCK_FILE="/tmp/repo_update.lock"
 
